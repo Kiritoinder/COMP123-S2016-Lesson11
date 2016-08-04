@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,17 +47,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddStudentForm.cs">
+    <Compile Include="StudentDetailsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddStudentForm.Designer.cs">
-      <DependentUpon>AddStudentForm.cs</DependentUpon>
+    <Compile Include="StudentDetailsForm.Designer.cs">
+      <DependentUpon>StudentDetailsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ColumnButton.cs" />
     <Compile Include="COMP123DataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>COMP123DataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Student.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Student.dbml</DependentUpon>
     </Compile>
     <Compile Include="StudentListForm.cs">
       <SubType>Form</SubType>
@@ -66,8 +72,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AddStudentForm.resx">
-      <DependentUpon>AddStudentForm.cs</DependentUpon>
+    <EmbeddedResource Include="StudentDetailsForm.resx">
+      <DependentUpon>StudentDetailsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -78,6 +84,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Student.dbml.layout">
+      <DependentUpon>Student.dbml</DependentUpon>
+    </None>
     <EmbeddedResource Include="StudentListForm.resx">
       <DependentUpon>StudentListForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -101,9 +110,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Student.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>Student.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

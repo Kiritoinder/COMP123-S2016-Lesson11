@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace COMP123_S2016_Lesson1_1_
 {
-    class ColumnButton
+    public enum ColumnButton
     {
+        details = 4,
+        Edit,
+        Delete
     }
 }
