@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.SubmitButton = new System.Windows.Forms.Button();
-            this.CancelButton = new System.Windows.Forms.Button();
+            this.CancelB = new System.Windows.Forms.Button();
             this.NewStdentLabel = new System.Windows.Forms.Label();
             this.FirstNameLabel = new System.Windows.Forms.Label();
             this.FirstNameTextBox = new System.Windows.Forms.TextBox();
@@ -51,17 +51,17 @@
             this.SubmitButton.UseVisualStyleBackColor = false;
             this.SubmitButton.Click += new System.EventHandler(this.SubmitButton_Click);
             // 
-            // CancelButton
+            // CancelB
             // 
-            this.CancelButton.BackColor = System.Drawing.Color.DarkRed;
-            this.CancelButton.Font = new System.Drawing.Font("Lucida Sans", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CancelButton.Location = new System.Drawing.Point(19, 377);
-            this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(142, 56);
-            this.CancelButton.TabIndex = 1;
-            this.CancelButton.Text = "Cancel";
-            this.CancelButton.UseVisualStyleBackColor = false;
-            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            this.CancelB.BackColor = System.Drawing.Color.DarkRed;
+            this.CancelB.Font = new System.Drawing.Font("Lucida Sans", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CancelB.Location = new System.Drawing.Point(19, 377);
+            this.CancelB.Name = "CancelB";
+            this.CancelB.Size = new System.Drawing.Size(142, 56);
+            this.CancelB.TabIndex = 1;
+            this.CancelB.Text = "Cancel";
+            this.CancelB.UseVisualStyleBackColor = false;
+            this.CancelB.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // NewStdentLabel
             // 
@@ -139,7 +139,7 @@
             this.Controls.Add(this.FirstNameTextBox);
             this.Controls.Add(this.FirstNameLabel);
             this.Controls.Add(this.NewStdentLabel);
-            this.Controls.Add(this.CancelButton);
+            this.Controls.Add(this.CancelB);
             this.Controls.Add(this.SubmitButton);
             this.Name = "StudentDetailsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -153,7 +153,7 @@
         #endregion
 
         private System.Windows.Forms.Button SubmitButton;
-        private System.Windows.Forms.Button CancelButton;
+        private System.Windows.Forms.Button CancelB;
         private System.Windows.Forms.Label NewStdentLabel;
         private System.Windows.Forms.Label FirstNameLabel;
         private System.Windows.Forms.TextBox FirstNameTextBox;

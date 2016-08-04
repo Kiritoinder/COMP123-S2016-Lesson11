@@ -32,24 +32,44 @@ namespace COMP123_S2016_Lesson1_1_
             // creates a reference to sql database
             StudentDataContext db = new StudentDataContext();
             Student newstudent = new Student();
-            //Copy data into student object from form text boxes  
-            newstudent.FirstName = FirstNameTextBox.Text;
-            newstudent.LastName = LastNameTextBox.Text;
-            newstudent.Number = StudentNumberTextBox.Text;
 
-            // insery the new student object into the sql database
-            db.GetTable<Student>().InsertOnSubmit(newstudent);
+            // check if the form type is edit, deete or details
+            if (this.FormType > 3)
+            {
+                newstudent = (from student in db.Students
+                              where student.StudentID == this.StudentID
+                              select student).FirstOrDefault();
 
-            // save changes
-            db.SubmitChanges();
+                //Copy data into student object from form text boxes  
+                newstudent.FirstName = FirstNameTextBox.Text;
+                newstudent.LastName = LastNameTextBox.Text;
+                newstudent.Number = StudentNumberTextBox.Text;
 
-            // show student list form
-            this.studentListForm.Show();
+                //check if the form tpe is "Add student"
+                if (this.FormType < 4)
+                {
+                    // insert the new student object into the sql database
+                    db.GetTable<Student>().InsertOnSubmit(newstudent);
+                }
+                //delete record
+                if (this.FormType == (int)ColumnButton.Delete)
+                {
+                    //Confirm if the user wants to delete the record
+                    DialogResult result = MessageBox.Show("Are You Sure?", "Confirm Deletion", MessageBoxButtons.OKCancel);
+                    if (result == DialogResult.OK)
+                    {
+                        db.GetTable<Student>().DeleteOnSubmit(newstudent);
+                    }                // save changes
+                    db.SubmitChanges();
 
-            // close this form
-            this.Close();
+                // show student list form
+                this.studentListForm.Show();
+
+                // close this form
+                this.Close();
 
 
+            }
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
@@ -83,7 +103,7 @@ namespace COMP123_S2016_Lesson1_1_
                     FirstNameTextBox.ReadOnly = true;
                     LastNameTextBox.ReadOnly = true;
                     StudentNumberTextBox.ReadOnly = true;
-                    CancelButton.Text = "Back";
+                    CancelB.Text = "Back";
                     break;
 
                 case (int)ColumnButton.Edit:
