@@ -58,5 +58,50 @@ namespace COMP123_S2016_Lesson1_1_
             this.Close();
 
         }
+
+        private void StudentDetailsForm_Load(object sender, EventArgs e)
+        {
+            // create database object
+            StudentDataContext db = new StudentDataContext();
+            // check to ensure that you are asking for details , edit or delete form
+            if (this.FormType > 3)
+            {
+                Student studentDetails = (from student in db.Students
+                                          where student.StudentID == this.StudentID
+                                          select student).FirstOrDefault();
+                //display details in the text boxs of the form
+                FirstNameTextBox.Text = studentDetails.FirstName;
+                LastNameTextBox.Text = studentDetails.LastName;
+                StudentNumberTextBox.Text = studentDetails.Number;
+            }
+            switch(this.FormType)
+            {
+                case (int)ColumnButton.details:
+                    NewStdentLabel.Text = "Student Details";
+                    this.Text = "Student Details";
+                    SubmitButton.Visible = false;
+                    FirstNameTextBox.ReadOnly = true;
+                    LastNameTextBox.ReadOnly = true;
+                    StudentNumberTextBox.ReadOnly = true;
+                    CancelButton.Text = "Back";
+                    break;
+
+                case (int)ColumnButton.Edit:
+                    NewStdentLabel.Text = "Edit Student";
+                    this.Text = "Edit Student";
+                    SubmitButton.Text = "Update";
+                    break;
+                // if the button clicked is the Delete Button
+                case (int)ColumnButton.Delete:
+                    NewStdentLabel.Text = "Delete Student";
+                    this.Text = "Delete Student";
+                    FirstNameTextBox.ReadOnly = true;
+                    LastNameTextBox.ReadOnly = true;
+                    StudentNumberTextBox.ReadOnly = true;
+                    SubmitButton.Text = "Delete";
+                    SubmitButton.BackColor = Color.Red;
+                    break;
+            }
+            }
     }
 }
